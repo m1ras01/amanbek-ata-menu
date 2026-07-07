@@ -1,0 +1,14 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="96" fill="#EAE2D1"/>
+  <circle cx="256" cy="210" r="90" stroke="#967531" stroke-width="8" fill="none"/>
+  <circle cx="256" cy="210" r="24" fill="#967531"/>
+  <line x1="256" y1="210" x2="256" y2="120" stroke="#967531" stroke-width="6" opacity="0.7"/>
+  <line x1="256" y1="210" x2="334" y2="165" stroke="#967531" stroke-width="6" opacity="0.7"/>
+  <line x1="256" y1="210" x2="334" y2="255" stroke="#967531" stroke-width="6" opacity="0.7"/>
+  <line x1="256" y1="210" x2="256" y2="300" stroke="#967531" stroke-width="6" opacity="0.7"/>
+  <line x1="256" y1="210" x2="178" y2="255" stroke="#967531" stroke-width="6" opacity="0.7"/>
+  <line x1="256" y1="210" x2="178" y2="165" stroke="#967531" stroke-width="6" opacity="0.7"/>
+  <path d="M140 360 C140 310 372 310 372 360 L372 390 C372 420 140 420 140 390 Z" fill="#967531"/>
+  <path d="M220 290 C210 260 230 240 220 220 M292 290 C302 260 282 240 292 220" stroke="#967531" stroke-width="10" stroke-linecap="round"/>
+  <text x="256" y="470" text-anchor="middle" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#630E14">Amanbek Ata</text>
+</svg>

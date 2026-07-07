@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Amanbek Ata — QR-меню
 
-## Getting Started
+Веб-приложение QR-меню ресторана с поддержкой русского, казахского и узбекского языков.
 
-First, run the development server:
+## Быстрый старт
 
 ```bash
+cd menu-app
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Откройте:
+- **Меню (для гостей):** http://localhost:3000
+- **Админ-панель:** http://localhost:3000/admin
+- **QR-код:** http://localhost:3000/admin/qr
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Пароль админки
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+По умолчанию: `amanbek2026`
 
-## Learn More
+Измените в файле `.env.local`:
+```
+ADMIN_PASSWORD=ваш_пароль
+NEXT_PUBLIC_SITE_URL=https://ваш-домен.kz
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Возможности
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Меню на 3 языках (RU / KZ / UZ)
+- Переключение языка с сохранением в браузере
+- Поиск по блюдам
+- Категории, фото, цены, метки
+- Админ-панель для управления меню
+- Генерация и скачивание QR-кода
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Деплой
 
-## Deploy on Vercel
+Рекомендуется [Vercel](https://vercel.com):
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Загрузите проект на GitHub
+2. Подключите к Vercel
+3. Укажите переменные `ADMIN_PASSWORD` и `NEXT_PUBLIC_SITE_URL`
+4. После деплоя скачайте QR из админки
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Структура
+
+```
+menu-app/
+├── data/menu.json       # Данные меню
+├── src/
+│   ├── app/             # Страницы и API
+│   ├── components/      # UI компоненты
+│   └── lib/             # Утилиты
+```

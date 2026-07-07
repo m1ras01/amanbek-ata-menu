@@ -1,0 +1,33 @@
+{
+  "y8tnf1ud": {
+    "id": "y8tnf1ud",
+    "items": [
+      {
+        "dishId": "dish-shorpa",
+        "quantity": 4,
+        "name": {
+          "ru": "Шорпа из баранины",
+          "kz": "Қой еті шорпасы",
+          "uz": "Qo'y go'shti shorvasi"
+        },
+        "price": 1890,
+        "weightOrVolume": "400 мл"
+      },
+      {
+        "dishId": "dish-lagman",
+        "quantity": 1,
+        "name": {
+          "ru": "Лагман",
+          "kz": "Лагман",
+          "uz": "Lag'mon"
+        },
+        "price": 2490,
+        "weightOrVolume": "450 г"
+      }
+    ],
+    "total": 10050,
+    "createdAt": "2026-07-07T09:14:49.022Z",
+    "updatedAt": "2026-07-07T09:21:57.833Z",
+    "status": "active"
+  }
+}

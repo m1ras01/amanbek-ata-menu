@@ -1,11 +1,13 @@
 import { Suspense } from "react";
-import { MenuPage } from "@/components/MenuPage";
 import { LangProvider } from "@/components/LangProvider";
-import { CartProvider } from "@/components/CartProvider";
-import { getPublicMenu } from "@/lib/menu-store";
+import { WaiterOrderView } from "@/components/WaiterOrderView";
 
-export default async function Home() {
-  const menu = await getPublicMenu();
+export default async function WaiterPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
 
   return (
     <LangProvider>
@@ -16,13 +18,7 @@ export default async function Home() {
           </div>
         }
       >
-        <CartProvider>
-          <MenuPage
-            settings={menu.settings}
-            categories={menu.categories}
-            dishes={menu.dishes}
-          />
-        </CartProvider>
+        <WaiterOrderView orderId={id} />
       </Suspense>
     </LangProvider>
   );
