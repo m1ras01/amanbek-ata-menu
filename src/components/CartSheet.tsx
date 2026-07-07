@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import QRCode from "qrcode";
 import { OrnamentDivider } from "@/components/BrandLogo";
 import { formatPrice, t } from "@/lib/i18n";
 import { useLang } from "./LangProvider";
@@ -26,34 +25,36 @@ export function CartSheet({ open, onClose }: Props) {
   } = useCart();
   const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
   const [syncing, setSyncing] = useState(false);
+  const [qrError, setQrError] = useState(false);
 
   useEffect(() => {
     if (!open || items.length === 0) {
       setQrDataUrl(null);
+      setQrError(false);
       return;
     }
 
     let cancelled = false;
     setSyncing(true);
+    setQrError(false);
 
     syncOrder().then(async (id) => {
-      if (cancelled || !id) {
+      if (cancelled) return;
+      if (!id) {
         setSyncing(false);
+        setQrError(true);
         return;
       }
-      const base =
-        process.env.NEXT_PUBLIC_SITE_URL ??
-        `${window.location.protocol}//${window.location.host}`;
-      const url = `${base}/waiter/${id}`;
-      const dataUrl = await QRCode.toDataURL(url, {
-        errorCorrectionLevel: "M",
-        margin: 2,
-        width: 260,
-        color: { dark: "#630E14", light: "#EAE2D1" },
-      });
-      if (!cancelled) {
-        setQrDataUrl(dataUrl);
-        setSyncing(false);
+
+      try {
+        const res = await fetch(`/api/orders/${id}/qr`);
+        if (!res.ok) throw new Error("QR fetch failed");
+        const { dataUrl } = await res.json();
+        if (!cancelled) setQrDataUrl(dataUrl);
+      } catch {
+        if (!cancelled) setQrError(true);
+      } finally {
+        if (!cancelled) setSyncing(false);
       }
     });
 
@@ -180,6 +181,40 @@ export function CartSheet({ open, onClose }: Props) {
                       alt="Order QR"
                       className="h-[260px] w-[260px] rounded-xl"
                     />
+                  ) : qrError ? (
+                    <div className="flex h-[260px] w-[260px] flex-col items-center justify-center gap-2 px-4 text-center">
+                      <p className="text-sm font-medium text-primary">
+                        {t(lang, "qrError")}
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setQrError(false);
+                          setSyncing(true);
+                          syncOrder().then(async (id) => {
+                            if (!id) {
+                              setSyncing(false);
+                              setQrError(true);
+                              return;
+                            }
+                            try {
+                              const res = await fetch(`/api/orders/${id}/qr`);
+                              if (!res.ok) throw new Error();
+                              const { dataUrl } = await res.json();
+                              setQrDataUrl(dataUrl);
+                              setQrError(false);
+                            } catch {
+                              setQrError(true);
+                            } finally {
+                              setSyncing(false);
+                            }
+                          });
+                        }}
+                        className="text-xs font-semibold text-accent underline"
+                      >
+                        {t(lang, "retry")}
+                      </button>
+                    </div>
                   ) : null}
                 </div>
               </div>

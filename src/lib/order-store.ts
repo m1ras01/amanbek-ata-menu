@@ -2,29 +2,49 @@ import { promises as fs } from "fs";
 import path from "path";
 import type { Order, OrderItem } from "./types";
 
-const DATA_PATH = path.join(process.cwd(), "data", "orders.json");
+const DATA_PATH = process.env.VERCEL
+  ? path.join("/tmp", "amanbek-orders.json")
+  : path.join(process.cwd(), "data", "orders.json");
+
 const MAX_AGE_MS = 24 * 60 * 60 * 1000;
+
+type OrdersMap = Record<string, Order>;
+
+function getMemoryCache(): OrdersMap {
+  const g = globalThis as typeof globalThis & { __amanbekOrders?: OrdersMap };
+  if (!g.__amanbekOrders) g.__amanbekOrders = {};
+  return g.__amanbekOrders;
+}
 
 function generateId(): string {
   return Math.random().toString(36).slice(2, 10);
 }
 
-async function readOrders(): Promise<Record<string, Order>> {
+async function readOrders(): Promise<OrdersMap> {
+  const cache = getMemoryCache();
   try {
     const raw = await fs.readFile(DATA_PATH, "utf-8");
-    return JSON.parse(raw) as Record<string, Order>;
+    const fromFile = JSON.parse(raw) as OrdersMap;
+    Object.assign(cache, fromFile);
   } catch {
-    return {};
+    // file missing or unreadable — use memory cache only
+  }
+  return { ...cache };
+}
+
+async function writeOrders(orders: OrdersMap): Promise<void> {
+  Object.assign(getMemoryCache(), orders);
+  try {
+    await fs.mkdir(path.dirname(DATA_PATH), { recursive: true });
+    await fs.writeFile(DATA_PATH, JSON.stringify(orders, null, 2), "utf-8");
+  } catch {
+    // Vercel: keep orders in memory if disk write fails
   }
 }
 
-async function writeOrders(orders: Record<string, Order>): Promise<void> {
-  await fs.writeFile(DATA_PATH, JSON.stringify(orders, null, 2), "utf-8");
-}
-
-function pruneOld(orders: Record<string, Order>): Record<string, Order> {
+function pruneOld(orders: OrdersMap): OrdersMap {
   const cutoff = Date.now() - MAX_AGE_MS;
-  const result: Record<string, Order> = {};
+  const result: OrdersMap = {};
   for (const [id, order] of Object.entries(orders)) {
     if (new Date(order.updatedAt).getTime() > cutoff) {
       result[id] = order;
@@ -83,7 +103,11 @@ export async function saveOrder(
 export async function completeOrder(id: string): Promise<Order | null> {
   const orders = await readOrders();
   if (!orders[id]) return null;
-  orders[id] = { ...orders[id], status: "completed", updatedAt: new Date().toISOString() };
+  orders[id] = {
+    ...orders[id],
+    status: "completed",
+    updatedAt: new Date().toISOString(),
+  };
   await writeOrders(orders);
   return orders[id];
 }
