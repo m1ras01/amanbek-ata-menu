@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { OrnamentDivider } from "@/components/BrandLogo";
+import { buildOrderPayload } from "@/lib/order-payload";
 import { formatPrice, t } from "@/lib/i18n";
 import { useLang } from "./LangProvider";
 import { useCart } from "./CartProvider";
@@ -20,7 +21,6 @@ export function CartSheet({ open, onClose }: Props) {
     totalPrice,
     updateQuantity,
     removeItem,
-    syncOrder,
     clearCart,
   } = useCart();
   const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
@@ -38,30 +38,30 @@ export function CartSheet({ open, onClose }: Props) {
     setSyncing(true);
     setQrError(false);
 
-    syncOrder().then(async (id) => {
-      if (cancelled) return;
-      if (!id) {
-        setSyncing(false);
-        setQrError(true);
-        return;
-      }
+    const payload = buildOrderPayload(items, table, totalPrice);
 
-      try {
-        const res = await fetch(`/api/orders/${id}/qr`);
+    fetch("/api/order-qr", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ payload }),
+    })
+      .then(async (res) => {
+        if (cancelled) return;
         if (!res.ok) throw new Error("QR fetch failed");
         const { dataUrl } = await res.json();
         if (!cancelled) setQrDataUrl(dataUrl);
-      } catch {
+      })
+      .catch(() => {
         if (!cancelled) setQrError(true);
-      } finally {
+      })
+      .finally(() => {
         if (!cancelled) setSyncing(false);
-      }
-    });
+      });
 
     return () => {
       cancelled = true;
     };
-  }, [open, items, syncOrder]);
+  }, [open, items, table, totalPrice]);
 
   if (!open) return null;
 
@@ -191,24 +191,24 @@ export function CartSheet({ open, onClose }: Props) {
                         onClick={() => {
                           setQrError(false);
                           setSyncing(true);
-                          syncOrder().then(async (id) => {
-                            if (!id) {
-                              setSyncing(false);
-                              setQrError(true);
-                              return;
-                            }
-                            try {
-                              const res = await fetch(`/api/orders/${id}/qr`);
+                          const payload = buildOrderPayload(
+                            items,
+                            table,
+                            totalPrice
+                          );
+                          fetch("/api/order-qr", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ payload }),
+                          })
+                            .then(async (res) => {
                               if (!res.ok) throw new Error();
                               const { dataUrl } = await res.json();
                               setQrDataUrl(dataUrl);
                               setQrError(false);
-                            } catch {
-                              setQrError(true);
-                            } finally {
-                              setSyncing(false);
-                            }
-                          });
+                            })
+                            .catch(() => setQrError(true))
+                            .finally(() => setSyncing(false));
                         }}
                         className="text-xs font-semibold text-accent underline"
                       >

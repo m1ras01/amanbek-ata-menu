@@ -2,6 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { BrandLogo, OrnamentDivider } from "@/components/BrandLogo";
+import {
+  decodeOrderPayload,
+  isEncodedOrderToken,
+  payloadToOrder,
+} from "@/lib/order-payload";
 import { formatPrice, t } from "@/lib/i18n";
 import { LanguageSwitcherLight } from "./LanguageSwitcher";
 import { useLang } from "./LangProvider";
@@ -13,8 +18,23 @@ export function WaiterOrderView({ orderId }: { orderId: string }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [done, setDone] = useState(false);
+  const [stateless, setStateless] = useState(false);
 
   useEffect(() => {
+    const encoded = decodeOrderPayload(orderId);
+    if (encoded) {
+      setOrder(payloadToOrder(orderId, encoded));
+      setStateless(true);
+      setLoading(false);
+      return;
+    }
+
+    if (isEncodedOrderToken(orderId)) {
+      setError(true);
+      setLoading(false);
+      return;
+    }
+
     fetch(`/api/orders/${orderId}`)
       .then((r) => {
         if (!r.ok) throw new Error();
@@ -29,6 +49,10 @@ export function WaiterOrderView({ orderId }: { orderId: string }) {
   }, [orderId]);
 
   const markDone = async () => {
+    if (stateless) {
+      setDone(true);
+      return;
+    }
     const res = await fetch(`/api/orders/${orderId}`, { method: "PATCH" });
     if (res.ok) setDone(true);
   };
