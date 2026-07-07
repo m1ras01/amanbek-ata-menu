@@ -2,8 +2,6 @@ export type Lang = "ru" | "kz" | "uz";
 
 export type LocalizedText = Record<Lang, string>;
 
-export type DishTag = "spicy" | "vegetarian" | "hit" | "new";
-
 export interface Category {
   id: string;
   sortOrder: number;
@@ -22,7 +20,6 @@ export interface Dish {
   price: number;
   weightOrVolume: string;
   imageUrl: string;
-  tags: DishTag[];
 }
 
 export interface RestaurantSettings {

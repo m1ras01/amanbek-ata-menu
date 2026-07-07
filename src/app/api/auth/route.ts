@@ -3,6 +3,7 @@ import {
   COOKIE_NAME,
   SESSION_VALUE,
   getAdminPassword,
+  getAdminUsername,
   isAuthenticated,
 } from "@/lib/auth";
 
@@ -12,10 +13,13 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const { password } = await request.json();
+  const { username, password } = await request.json();
 
-  if (password !== getAdminPassword()) {
-    return NextResponse.json({ error: "Invalid password" }, { status: 401 });
+  if (
+    username !== getAdminUsername() ||
+    password !== getAdminPassword()
+  ) {
+    return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
   }
 
   const response = NextResponse.json({ ok: true });

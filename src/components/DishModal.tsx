@@ -5,7 +5,6 @@ import { useState } from "react";
 import { formatPrice, t } from "@/lib/i18n";
 import type { Dish } from "@/lib/types";
 import { useCart } from "./CartProvider";
-import { DishTagBadge } from "./DishTags";
 import { useLang } from "./LangProvider";
 
 interface Props {
@@ -55,18 +54,13 @@ export function DishModal({ dish, onClose }: Props) {
         </div>
 
         <div className="p-5">
-          <div className="flex flex-wrap gap-1.5">
-            {dish.tags.map((tag) => (
-              <DishTagBadge key={tag} tag={tag} label={t(lang, tag)} />
-            ))}
-            {!dish.isAvailable && (
-              <span className="rounded-full border border-primary/10 bg-cream-dark px-2.5 py-0.5 text-xs font-semibold text-primary-muted">
-                {t(lang, "notAvailable")}
-              </span>
-            )}
-          </div>
+          {!dish.isAvailable && (
+            <span className="rounded-full border border-primary/10 bg-cream-dark px-2.5 py-0.5 text-xs font-semibold text-primary-muted">
+              {t(lang, "notAvailable")}
+            </span>
+          )}
 
-          <p className="mt-4 text-sm leading-relaxed text-primary-muted">
+          <p className={`text-sm leading-relaxed text-primary-muted ${!dish.isAvailable ? "mt-4" : ""}`}>
             {dish.description[lang]}
           </p>
 

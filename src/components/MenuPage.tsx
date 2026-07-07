@@ -10,6 +10,7 @@ import { DishModal } from "@/components/DishModal";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useLang } from "@/components/LangProvider";
 import { SearchBar } from "@/components/SearchBar";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { t } from "@/lib/i18n";
 import type { Category, Dish, RestaurantSettings } from "@/lib/types";
 
@@ -63,15 +64,16 @@ export function MenuPage({ settings, categories, dishes }: Props) {
           </div>
           <div className="mt-4">
             <OrnamentDivider />
-            <p className="mt-2 text-center font-display text-sm tracking-wide text-gold-light/90">
+            <p className="header-subtitle mt-2 text-center font-display text-sm tracking-wide">
               {t(lang, "menu")}
             </p>
           </div>
         </div>
-        <div className="h-3 rounded-t-3xl bg-cream" />
+        <div className="header-curve" />
       </header>
 
-      <div className="-mt-1 bg-cream">
+      <div className="bg-cream">
+        <ThemeSwitcher />
         <SearchBar value={search} onChange={setSearch} />
         <CategoryNav
           categories={categories}

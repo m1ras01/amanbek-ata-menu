@@ -3,6 +3,10 @@ import { cookies } from "next/headers";
 const COOKIE_NAME = "admin_session";
 const SESSION_VALUE = "authenticated";
 
+export function getAdminUsername(): string {
+  return process.env.ADMIN_USERNAME ?? "admin";
+}
+
 export function getAdminPassword(): string {
   return process.env.ADMIN_PASSWORD ?? "amanbek2026";
 }

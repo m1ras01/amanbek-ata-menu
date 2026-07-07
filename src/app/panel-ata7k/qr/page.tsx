@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 
-export default function QrPage() {
+export default function MenuQrPage() {
   const [qr, setQr] = useState<{ url: string; dataUrl: string } | null>(null);
   const [table, setTable] = useState("");
 
@@ -22,11 +22,11 @@ export default function QrPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold text-primary">QR-код для столов</h1>
-      <p className="mt-1 text-sm text-primary/60">
+      <p className="mt-1 text-sm text-primary-muted">
         Распечатайте и разместите на столах. QR не меняется при обновлении меню.
       </p>
 
-      <div className="mt-6 rounded-2xl bg-white p-6 shadow-sm">
+      <div className="card mt-6 rounded-2xl p-6">
         <label className="text-sm font-medium text-primary">
           Номер стола (необязательно)
         </label>
@@ -52,11 +52,9 @@ export default function QrPage() {
               <p className="mt-4 text-sm font-semibold text-primary">
                 Сканируйте меню
               </p>
-              <p className="text-xs text-primary/50">Мәзірді сканерлеңіз</p>
-              <p className="text-xs text-primary/50">Menyuni skanerlang</p>
-              <p className="mt-2 text-xs text-primary/40 break-all">
-                {qr.url}
-              </p>
+              <p className="text-xs text-primary-muted">Мәзірді сканерлеңіз</p>
+              <p className="text-xs text-primary-muted">Menyuni skanerlang</p>
+              <p className="mt-2 text-xs text-primary/40 break-all">{qr.url}</p>
             </div>
 
             <button

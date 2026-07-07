@@ -12,17 +12,24 @@ npm run dev
 
 Откройте:
 - **Меню (для гостей):** http://localhost:3000
-- **Админ-панель:** http://localhost:3000/admin
-- **QR-код:** http://localhost:3000/admin/qr
+- **Админ-панель:** http://localhost:3000/panel-ata7k
+- **QR меню:** http://localhost:3000/panel-ata7k/qr
+- **QR входа:** http://localhost:3000/panel-ata7k/access
 
-## Пароль админки
+## Доступ в админку
 
-По умолчанию: `amanbek2026`
+| | |
+|---|---|
+| **Адрес** | `/panel-ata7k` (скрытый, `/admin` не работает) |
+| **Логин** | `admin` |
+| **Пароль** | `amanbek2026` |
 
-Измените в файле `.env.local`:
+Измените в `.env.local`:
 ```
+ADMIN_PATH=panel-ata7k
+NEXT_PUBLIC_ADMIN_PATH=panel-ata7k
+ADMIN_USERNAME=admin
 ADMIN_PASSWORD=ваш_пароль
-NEXT_PUBLIC_SITE_URL=https://ваш-домен.kz
 ```
 
 ## Возможности

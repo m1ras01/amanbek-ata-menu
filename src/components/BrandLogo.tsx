@@ -95,14 +95,14 @@ export function BrandLogo({ size = "md", onDark = false }: Props) {
       <div className="leading-none">
         <p
           className={`font-display font-bold tracking-wide ${titleSize} ${
-            onDark ? "text-cream" : "text-primary"
+            onDark ? "header-title" : "text-primary"
           }`}
         >
           Amanbek
         </p>
         <p
           className={`font-display font-semibold tracking-widest ${subSize} ${
-            onDark ? "text-gold-light" : "text-gold"
+            onDark ? "header-subtitle" : "text-gold"
           }`}
         >
           Ata

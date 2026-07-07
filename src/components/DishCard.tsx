@@ -4,7 +4,6 @@ import Image from "next/image";
 import { formatPrice, t } from "@/lib/i18n";
 import type { Dish } from "@/lib/types";
 import { useCart } from "./CartProvider";
-import { DishTagBadge } from "./DishTags";
 import { useLang } from "./LangProvider";
 
 interface Props {
@@ -40,19 +39,12 @@ export function DishCard({ dish, onClick }: Props) {
           className="object-cover transition-transform duration-500 group-hover:scale-110"
           sizes="(max-width: 768px) 50vw, 33vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-transparent to-transparent" />
+        <div className="dish-overlay absolute inset-0" />
         {unavailable && (
           <div className="absolute inset-0 flex items-center justify-center bg-primary/30 backdrop-blur-[2px]">
             <span className="rounded-full bg-paper/95 px-3 py-1 text-[10px] font-bold tracking-wide text-primary uppercase">
               {t(lang, "notAvailable")}
             </span>
-          </div>
-        )}
-        {dish.tags.length > 0 && (
-          <div className="absolute left-2 top-2 flex flex-wrap gap-1">
-            {dish.tags.map((tag) => (
-              <DishTagBadge key={tag} tag={tag} label={t(lang, tag)} />
-            ))}
           </div>
         )}
         <div className="absolute bottom-2 left-2 right-2">
@@ -77,7 +69,7 @@ export function DishCard({ dish, onClick }: Props) {
       {!unavailable && (
         <button
           onClick={handleQuickAdd}
-          className="btn-primary absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full text-base font-bold text-white shadow-lg"
+          className="btn-primary absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full text-base font-bold shadow-lg"
         >
           +
         </button>

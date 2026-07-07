@@ -88,29 +88,7 @@
       },
       "price": 1890,
       "weightOrVolume": "400 мл",
-      "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&q=80",
-      "tags": ["hit"]
-    },
-    {
-      "id": "dish-lagman",
-      "categoryId": "cat-soups",
-      "sortOrder": 2,
-      "isActive": true,
-      "isAvailable": true,
-      "name": {
-        "ru": "Лагман",
-        "kz": "Лагман",
-        "uz": "Lag'mon"
-      },
-      "description": {
-        "ru": "Домашняя лапша с говядиной, овощами и ароматными специями",
-        "kz": "Үйде дайындалған кеспе, сиыр еті және көкөністермен",
-        "uz": "Uy tayyorlangan lag'mon, mol go'shti va sabzavotlar bilan"
-      },
-      "price": 2490,
-      "weightOrVolume": "450 г",
-      "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&q=80",
-      "tags": ["hit", "spicy"]
+      "imageUrl": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&q=80"
     },
     {
       "id": "dish-plov",
@@ -130,50 +108,7 @@
       },
       "price": 2890,
       "weightOrVolume": "350 г",
-      "imageUrl": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=800&q=80",
-      "tags": ["hit"]
-    },
-    {
-      "id": "dish-beshbarmak",
-      "categoryId": "cat-main",
-      "sortOrder": 2,
-      "isActive": true,
-      "isAvailable": true,
-      "name": {
-        "ru": "Бешбармак",
-        "kz": "Бесбармақ",
-        "uz": "Beshbarmoq"
-      },
-      "description": {
-        "ru": "Отварное мясо с лапшой, подаётся с бульоном",
-        "kz": "Қайнатылған ет, кеспе және сорпамен беріледі",
-        "uz": "Qaynatilgan go'sht, lag'mon va shorva bilan tortiladi"
-      },
-      "price": 3490,
-      "weightOrVolume": "400 г",
-      "imageUrl": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=800&q=80",
-      "tags": ["hit", "new"]
-    },
-    {
-      "id": "dish-manti",
-      "categoryId": "cat-main",
-      "sortOrder": 3,
-      "isActive": true,
-      "isAvailable": true,
-      "name": {
-        "ru": "Манты",
-        "kz": "Мәнті",
-        "uz": "Manti"
-      },
-      "description": {
-        "ru": "Паровые манты с мясной начинкой, подаются со сметаной",
-        "kz": "Етпен толтырылған буға пісірілген мәнті",
-        "uz": "Go'sht bilan to'ldirilgan bug'da pishirilgan manti"
-      },
-      "price": 2190,
-      "weightOrVolume": "5 шт",
-      "imageUrl": "https://images.unsplash.com/photo-1496116218417-1a781a1bf416?w=800&q=80",
-      "tags": []
+      "imageUrl": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=800&q=80"
     },
     {
       "id": "dish-shashlik",
@@ -193,29 +128,7 @@
       },
       "price": 2690,
       "weightOrVolume": "250 г",
-      "imageUrl": "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=800&q=80",
-      "tags": ["hit"]
-    },
-    {
-      "id": "dish-kuyrdak",
-      "categoryId": "cat-grill",
-      "sortOrder": 2,
-      "isActive": true,
-      "isAvailable": true,
-      "name": {
-        "ru": "Куырдак",
-        "kz": "Қуырдақ",
-        "uz": "Qovurma"
-      },
-      "description": {
-        "ru": "Обжаренная баранина с луком и специями на сковороде",
-        "kz": "Пияз және дәмдеуіштермен қуырылған қой еті",
-        "uz": "Piyoz va ziravorlar bilan qovurilgan qo'y go'shti"
-      },
-      "price": 2990,
-      "weightOrVolume": "300 г",
-      "imageUrl": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80",
-      "tags": ["spicy"]
+      "imageUrl": "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=800&q=80"
     },
     {
       "id": "dish-baursak",
@@ -235,29 +148,7 @@
       },
       "price": 890,
       "weightOrVolume": "6 шт",
-      "imageUrl": "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=800&q=80",
-      "tags": ["vegetarian"]
-    },
-    {
-      "id": "dish-lepeshka",
-      "categoryId": "cat-bread",
-      "sortOrder": 2,
-      "isActive": true,
-      "isAvailable": true,
-      "name": {
-        "ru": "Лепёшка тандырная",
-        "kz": "Тандыр наны",
-        "uz": "Tandir noni"
-      },
-      "description": {
-        "ru": "Свежая лепёшка из тандыра, хрустящая снаружи",
-        "kz": "Тандырда пісірілген дәмді ыстық нан",
-        "uz": "Tandirda pishirilgan yangi va issiq non"
-      },
-      "price": 390,
-      "weightOrVolume": "1 шт",
-      "imageUrl": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80",
-      "tags": ["vegetarian"]
+      "imageUrl": "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=800&q=80"
     },
     {
       "id": "dish-chai",
@@ -277,8 +168,87 @@
       },
       "price": 590,
       "weightOrVolume": "1 л",
-      "imageUrl": "https://images.unsplash.com/photo-1576092762791-fdd6bfc0b44c?w=800&q=80",
-      "tags": []
+      "imageUrl": "https://images.unsplash.com/photo-1576092762791-fdd6bfc0b44c?w=800&q=80"
+    },
+    {
+      "id": "dish-lagman",
+      "categoryId": "cat-soups",
+      "sortOrder": 2,
+      "isActive": true,
+      "isAvailable": true,
+      "name": {
+        "ru": "Лагман",
+        "kz": "Лагман",
+        "uz": "Lag'mon"
+      },
+      "description": {
+        "ru": "Домашняя лапша с говядиной, овощами и ароматными специями",
+        "kz": "Үйде дайындалған кеспе, сиыр еті және көкөністермен",
+        "uz": "Uy tayyorlangan lag'mon, mol go'shti va sabzavotlar bilan"
+      },
+      "price": 2490,
+      "weightOrVolume": "450 г",
+      "imageUrl": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&q=80"
+    },
+    {
+      "id": "dish-beshbarmak",
+      "categoryId": "cat-main",
+      "sortOrder": 2,
+      "isActive": true,
+      "isAvailable": true,
+      "name": {
+        "ru": "Бешбармак",
+        "kz": "Бесбармақ",
+        "uz": "Beshbarmoq"
+      },
+      "description": {
+        "ru": "Отварное мясо с лапшой, подаётся с бульоном",
+        "kz": "Қайнатылған ет, кеспе және сорпамен беріледі",
+        "uz": "Qaynatilgan go'sht, lag'mon va shorva bilan tortiladi"
+      },
+      "price": 3490,
+      "weightOrVolume": "400 г",
+      "imageUrl": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=800&q=80"
+    },
+    {
+      "id": "dish-kuyrdak",
+      "categoryId": "cat-grill",
+      "sortOrder": 2,
+      "isActive": true,
+      "isAvailable": true,
+      "name": {
+        "ru": "Куырдак",
+        "kz": "Қуырдақ",
+        "uz": "Qovurma"
+      },
+      "description": {
+        "ru": "Обжаренная баранина с луком и специями на сковороде",
+        "kz": "Пияз және дәмдеуіштермен қуырылған қой еті",
+        "uz": "Piyoz va ziravorlar bilan qovurilgan qo'y go'shti"
+      },
+      "price": 2990,
+      "weightOrVolume": "300 г",
+      "imageUrl": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80"
+    },
+    {
+      "id": "dish-lepeshka",
+      "categoryId": "cat-bread",
+      "sortOrder": 2,
+      "isActive": true,
+      "isAvailable": true,
+      "name": {
+        "ru": "Лепёшка тандырная",
+        "kz": "Тандыр наны",
+        "uz": "Tandir noni"
+      },
+      "description": {
+        "ru": "Свежая лепёшка из тандыра, хрустящая снаружи",
+        "kz": "Тандырда пісірілген дәмді ыстық нан",
+        "uz": "Tandirda pishirilgan yangi va issiq non"
+      },
+      "price": 390,
+      "weightOrVolume": "1 шт",
+      "imageUrl": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80"
     },
     {
       "id": "dish-ayran",
@@ -298,8 +268,27 @@
       },
       "price": 490,
       "weightOrVolume": "0,5 л",
-      "imageUrl": "https://images.unsplash.com/photo-1623065424881-8fc9b91c8c74?w=800&q=80",
-      "tags": ["vegetarian"]
+      "imageUrl": "https://images.unsplash.com/photo-1623065424881-8fc9b91c8c74?w=800&q=80"
+    },
+    {
+      "id": "dish-manti",
+      "categoryId": "cat-main",
+      "sortOrder": 3,
+      "isActive": true,
+      "isAvailable": true,
+      "name": {
+        "ru": "Манты",
+        "kz": "Мәнті",
+        "uz": "Manti"
+      },
+      "description": {
+        "ru": "Паровые манты с мясной начинкой, подаются со сметаной",
+        "kz": "Етпен толтырылған буға пісірілген мәнті",
+        "uz": "Go'sht bilan to'ldirilgan bug'da pishirilgan manti"
+      },
+      "price": 2190,
+      "weightOrVolume": "5 шт",
+      "imageUrl": "https://images.unsplash.com/photo-1496116218417-1a781a1bf416?w=800&q=80"
     },
     {
       "id": "dish-kumys",
@@ -319,8 +308,7 @@
       },
       "price": 790,
       "weightOrVolume": "0,3 л",
-      "imageUrl": "https://images.unsplash.com/photo-1546173159-315724a31696?w=800&q=80",
-      "tags": ["new"]
+      "imageUrl": "https://images.unsplash.com/photo-1546173159-315724a31696?w=800&q=80"
     }
   ]
 }

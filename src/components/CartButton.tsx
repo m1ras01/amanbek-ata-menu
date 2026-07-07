@@ -17,7 +17,7 @@ export function CartButton({ onClick }: Props) {
   return (
     <button
       onClick={onClick}
-      className="animate-pulse-soft btn-primary fixed bottom-5 left-4 right-4 z-40 mx-auto flex max-w-lg items-center justify-between rounded-2xl px-5 py-4 text-white"
+      className="animate-pulse-soft btn-primary fixed bottom-5 left-4 right-4 z-40 mx-auto flex max-w-lg items-center justify-between rounded-2xl px-5 py-4"
     >
       <div className="flex items-center gap-3">
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-sm font-bold ring-1 ring-white/30">
